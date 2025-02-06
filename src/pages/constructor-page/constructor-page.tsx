@@ -33,4 +33,4 @@ const ConstructorPage: FC = () => {
   );
 };
 
-export default ConstructorPage
+export default ConstructorPage;

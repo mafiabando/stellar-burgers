@@ -6,14 +6,14 @@ export type TConstructorState = {
   constructor: {
     bun: TConstructorIngredient | null;
     ingredients: TConstructorIngredient[];
-  }
+  };
 };
 
 export const initialState: TConstructorState = {
   error: null,
   constructor: {
-  bun: null,
-  ingredients: []
+    bun: null,
+    ingredients: []
   }
 };
 const constructorSlice = createSlice({
@@ -21,18 +21,18 @@ const constructorSlice = createSlice({
   initialState,
   reducers: {
     addIngredient: {
-      reducer: (state, action: PayloadAction<TConstructorIngredient>) => {  
+      reducer: (state, action: PayloadAction<TConstructorIngredient>) => {
         if (action.payload.type === 'bun') {
           state.constructor.bun = {
             ...state.constructor.bun,
             ...action.payload
-          }
+          };
         } else {
           state.constructor.ingredients = [
             ...state.constructor.ingredients,
             action.payload
-          ]
-        };
+          ];
+        }
       },
       prepare: (ingredient: TIngredient) => {
         const id = nanoid();
@@ -54,7 +54,8 @@ const constructorSlice = createSlice({
       const newIndex = upwards ? index - 1 : index + 1;
 
       if (newIndex >= 0 && newIndex < state.constructor.ingredients.length) {
-        state.constructor.ingredients[index] = state.constructor.ingredients[newIndex];
+        state.constructor.ingredients[index] =
+          state.constructor.ingredients[newIndex];
         state.constructor.ingredients[newIndex] = ingredientLink;
       }
     },
@@ -62,7 +63,7 @@ const constructorSlice = createSlice({
       state.constructor = {
         bun: null,
         ingredients: []
-      }
+      };
     }
   },
   selectors: {

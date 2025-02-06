@@ -53,5 +53,3 @@ export default orderSlice.reducer;
 export const { clearOrder } = orderSlice.actions;
 export const { getIsLoadingOrderSelector, getOrderDataSelector } =
   orderSlice.selectors;
-
-  

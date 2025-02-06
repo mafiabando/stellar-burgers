@@ -35,4 +35,4 @@ const Feed: FC = () => {
   );
 };
 
-export default Feed
+export default Feed;

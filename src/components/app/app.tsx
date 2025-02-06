@@ -32,7 +32,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchIngredientsApi())
+    dispatch(fetchIngredientsApi());
     dispatch(fetchGetUserApi());
   }, []);
 

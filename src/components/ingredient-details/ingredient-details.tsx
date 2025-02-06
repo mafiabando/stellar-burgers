@@ -7,11 +7,11 @@ import { getIngredientsDataSelector } from '../../services/slices/ingredients-sl
 
 export const IngredientDetails: FC = () => {
   /** TODO: взять переменную из стора */
-  const ingredients = useSelector(getIngredientsDataSelector)
-  
-  const id = useParams<{ id: string }>()
+  const ingredients = useSelector(getIngredientsDataSelector);
 
-  const ingredientData = ingredients.find((item) => item._id === id)
+  const id = useParams<{ id: string }>();
+
+  const ingredientData = ingredients.find((item) => item._id === id);
 
   if (!ingredientData) {
     return <Preloader />;

@@ -8,7 +8,7 @@ import { fetchLogoutApi } from '../../services/slices/user-slice';
 export const ProfileMenu: FC = () => {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(fetchLogoutApi());

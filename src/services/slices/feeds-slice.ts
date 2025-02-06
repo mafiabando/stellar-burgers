@@ -43,7 +43,7 @@ const feedsSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchFeedsApi.rejected, (state, action) => {
-        state.error = action.error.message
+        state.error = action.error.message;
       })
       .addCase(fetchFeedsApi.fulfilled, (state, action) => {
         state.error = null;
@@ -55,7 +55,6 @@ const feedsSlice = createSlice({
       })
       .addCase(fetchOrderByNumberApi.pending, (state) => {
         state.error = null;
-
       })
       .addCase(fetchOrderByNumberApi.rejected, (state, action) => {
         state.error = action.error.message;
@@ -68,10 +67,9 @@ const feedsSlice = createSlice({
 });
 
 export default feedsSlice.reducer;
-export const { getFeedsDataSelector, getOrderByNumberSelector, getTotalSelector, getTotalTodaySelector } =
-  feedsSlice.selectors;
-
-
-
-
-  
+export const {
+  getFeedsDataSelector,
+  getOrderByNumberSelector,
+  getTotalSelector,
+  getTotalTodaySelector
+} = feedsSlice.selectors;

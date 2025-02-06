@@ -12,13 +12,13 @@ import { number } from 'prop-types';
 
 export const OrderInfo: FC = () => {
   /** TODO: взять переменные orderData и ingredients из стора */
-  const dispatch = useDispatch()
-  const { number } = useParams<{ number: string}>();
+  const dispatch = useDispatch();
+  const { number } = useParams<{ number: string }>();
 
   useEffect(() => {
-    dispatch(fetchOrderByNumberApi(Number(number)))
-  })
-  
+    dispatch(fetchOrderByNumberApi(Number(number)));
+  });
+
   const orderData = useSelector(getOrderDataSelector);
 
   const ingredients: TIngredient[] = useSelector(getIngredientsDataSelector);
