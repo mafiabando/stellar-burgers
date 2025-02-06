@@ -1,1 +1,1 @@
-export { ConstructorPage } from './constructor-page';
+export { default } from './constructor-page';
