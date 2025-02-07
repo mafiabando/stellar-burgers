@@ -2,46 +2,33 @@ import { PayloadAction, createSlice, nanoid } from '@reduxjs/toolkit';
 import { TConstructorIngredient, TIngredient } from '@utils-types';
 
 export type TConstructorState = {
-  error: string | null | undefined;
-  constructor: {
     bun: TConstructorIngredient | null;
     ingredients: TConstructorIngredient[];
-  };
 };
 
 export const initialState: TConstructorState = {
-  error: null,
-  constructor: {
     bun: null,
     ingredients: []
-  }
 };
 const constructorSlice = createSlice({
   name: 'constructor',
   initialState,
   reducers: {
     addIngredient: {
-      reducer: (state, action: PayloadAction<TConstructorIngredient>) => {
-        if (action.payload.type === 'bun') {
-          state.constructor.bun = {
-            ...state.constructor.bun,
-            ...action.payload
-          };
+      reducer: (state, { payload }: PayloadAction<TConstructorIngredient>) => {
+        if (payload.type === 'bun') {
+          state.bun = payload;
         } else {
-          state.constructor.ingredients = [
-            ...state.constructor.ingredients,
-            action.payload
-          ];
+          state.ingredients.push(payload);
         }
       },
-      prepare: (ingredient: TIngredient) => {
-        const id = nanoid();
-        return { payload: { ...ingredient, id } };
-      }
+      prepare: (ingredient: TIngredient) => ({
+        payload: { ...ingredient, id: nanoid() }
+      })
     },
     removeIngredient(state, action: PayloadAction<string>) {
-      state.constructor.ingredients = state.constructor.ingredients.filter(
-        (item) => item.id !== action.payload
+      state.ingredients = state.ingredients.filter(
+        (item) => item._id !== action.payload
       );
     },
     moveIngredient: (
@@ -49,28 +36,27 @@ const constructorSlice = createSlice({
       action: PayloadAction<{ index: number; upwards: boolean }>
     ) => {
       const { index, upwards } = action.payload;
-      const ingredientLink = state.constructor.ingredients[index];
+      const ingredientLink = state.ingredients[index];
 
       const newIndex = upwards ? index - 1 : index + 1;
 
-      if (newIndex >= 0 && newIndex < state.constructor.ingredients.length) {
-        state.constructor.ingredients[index] =
-          state.constructor.ingredients[newIndex];
-        state.constructor.ingredients[newIndex] = ingredientLink;
+      if (newIndex >= 0 && newIndex < state.ingredients.length) {
+        state.ingredients[index] =
+          state.ingredients[newIndex];
+        state.ingredients[newIndex] = ingredientLink;
       }
     },
     resetConstructor(state) {
-      state.constructor = {
+      state = {
         bun: null,
         ingredients: []
       };
     }
   },
   selectors: {
-    getConstructorSelector: (state) => state.constructor
+    getConstructorSelector: (state) => state
   }
 });
-
 export default constructorSlice.reducer;
 export const { getConstructorSelector } = constructorSlice.selectors;
 export const {
@@ -79,3 +65,5 @@ export const {
   moveIngredient,
   resetConstructor
 } = constructorSlice.actions;
+
+console.dir(getConstructorSelector)

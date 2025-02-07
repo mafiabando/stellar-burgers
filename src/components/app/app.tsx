@@ -32,7 +32,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchIngredientsApi());
+    dispatch(fetchIngredientsApi())
     dispatch(fetchGetUserApi());
   }, []);
 
@@ -48,17 +48,13 @@ const App = () => {
         <Route
           path='/login'
           element={
-            <ProtectedRoute onlyUnAuth>
               <Login />
-            </ProtectedRoute>
           }
         />
         <Route
           path='/register'
           element={
-            <ProtectedRoute onlyUnAuth>
               <Register />
-            </ProtectedRoute>
           }
         />
         <Route
