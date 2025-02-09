@@ -15,7 +15,6 @@ import { AppHeader, OrderInfo, IngredientDetails, Modal } from '@components';
 import { ProtectedRoute } from '../protected-route/protected-route';
 
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { fetchFeedsApi } from '../../services/slices/feeds-slice';
 import { fetchGetUserApi } from '../../services/slices/user-slice';
 import { fetchIngredientsApi } from '../../services/slices/ingredients-slice';
 import { useDispatch } from '../../services/store';
@@ -32,8 +31,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchIngredientsApi())
     dispatch(fetchGetUserApi());
+    dispatch(fetchIngredientsApi());
   }, []);
 
   return (
@@ -48,13 +47,17 @@ const App = () => {
         <Route
           path='/login'
           element={
+            <ProtectedRoute onlyUnAuth>
               <Login />
+            </ProtectedRoute>
           }
         />
         <Route
           path='/register'
           element={
+            <ProtectedRoute onlyUnAuth>
               <Register />
+            </ProtectedRoute>
           }
         />
         <Route

@@ -1,6 +1,7 @@
 import { orderBurgerApi } from '@api';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TOrder } from '@utils-types';
+import { TConstructorState } from './constructor-slice';
 
 export type TOrderState = {
   isLoading: boolean;

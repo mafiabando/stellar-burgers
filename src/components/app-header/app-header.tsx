@@ -7,6 +7,6 @@ import { userSelector } from '../../services/slices/user-slice';
 export const AppHeader: FC = () => {
   const user = useSelector(userSelector);
   const [isOpen, setIsOpen] = useState(false);
-  
+
   return <AppHeaderUI userName={user?.name} />;
 };
