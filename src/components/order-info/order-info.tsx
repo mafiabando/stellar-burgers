@@ -6,21 +6,22 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from '../../services/store';
 
 import { fetchOrderByNumberApi } from '../../services/slices/feeds-slice';
-import { getOrderByNumberSelector } from '../../services/slices/feeds-slice';
+import { getOrderDataSelector } from '../../services/slices/order-slice';
 import { getIngredientsDataSelector } from '../../services/slices/ingredients-slice';
+import { number } from 'prop-types';
 
 export const OrderInfo: FC = () => {
   /** TODO: взять переменные orderData и ingredients из стора */
   const dispatch = useDispatch();
-  const { number } = useParams();
+  const { number } = useParams<{ number: string }>();
 
   useEffect(() => {
     dispatch(fetchOrderByNumberApi(Number(number)));
-  }, [dispatch]);
+  });
 
-  const orderData = useSelector(getOrderByNumberSelector);
+  const orderData = useSelector(getOrderDataSelector);
 
-  const ingredients = useSelector(getIngredientsDataSelector);
+  const ingredients: TIngredient[] = useSelector(getIngredientsDataSelector);
 
   /* Готовим данные для отображения */
   const orderInfo = useMemo(() => {

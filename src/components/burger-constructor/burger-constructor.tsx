@@ -23,19 +23,19 @@ export const BurgerConstructor: FC = () => {
   const orderModalData = useSelector(getOrderDataSelector);
   const orderRequest = useSelector(getIsLoadingOrderSelector);
   const isAuthenticated = useSelector(isAuthenticatedSelector);
-
-  const onOrderClick = () => {
+  
+   const onOrderClick = () => {
     if (!isAuthenticated) {
       navigate('/login');
     }
 
-    const { bun, ingredients } = constructorItems;
+    const { bun, ingredients } = constructorItems
 
     if (!constructorItems.bun || orderRequest) return;
 
-    const orderData: string[] = [
+    const orderData = [
       bun?._id!,
-      ...ingredients.map((ingredient) => ingredient._id),
+      ...ingredients.map((item) => item._id),
       bun?._id!
     ];
     dispatch(fetchOrderBurgerApi(orderData));
@@ -47,22 +47,20 @@ export const BurgerConstructor: FC = () => {
     dispatch(resetConstructor());
   };
 
-  const price = useMemo(() => {
-    if (
-      !constructorItems ||
-      !constructorItems.bun ||
-      !constructorItems.ingredients
-    ) {
-      return 0;
-    }
-    const bunPrice = constructorItems.bun?.price || 0;
-    const ingredientsPrice = constructorItems.ingredients.reduce(
-      (sum, ingredient) => sum + (ingredient.price || 0),
-      0
-    );
-
-    return bunPrice * 2 + ingredientsPrice;
-  }, [constructorItems]);
+  const price = useMemo(
+    () =>
+      {
+        if (!constructorItems || !constructorItems.bun || !constructorItems.ingredients) {
+          return 0; 
+        }
+        const bunPrice = constructorItems.bun?.price || 0;
+        const ingredientsPrice = constructorItems.ingredients.reduce(
+          (sum, ingredient) => sum + (ingredient.price || 0),
+          0
+        );
+      
+        return bunPrice * 2 + ingredientsPrice;
+      }, [constructorItems]);
 
   return (
     <BurgerConstructorUI

@@ -9,7 +9,7 @@ export const IngredientDetails: FC = () => {
   /** TODO: взять переменную из стора */
   const ingredients = useSelector(getIngredientsDataSelector);
 
-  const { id } = useParams();
+  const id = useParams<{ id: string }>();
 
   const ingredientData = ingredients.find((item) => item._id === id);
 

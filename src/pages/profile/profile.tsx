@@ -3,19 +3,16 @@ import { FC, SyntheticEvent, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from '../../services/store';
 import {
   userSelector,
-  fetchUpdateUserApi,
-  errorSelector,
-  resetError
+  fetchUpdateUserApi
 } from '../../services/slices/user-slice';
 export const Profile: FC = () => {
   /** TODO: взять переменную из стора */
-  const dispatch = useDispatch();
   const user = useSelector(userSelector);
-  const error = useSelector(errorSelector);
+  const dispatch = useDispatch();
 
   const [formValue, setFormValue] = useState({
-    name: user?.name! || '',
-    email: user?.email! || '',
+    name: user!.name,
+    email: user!.email,
     password: ''
   });
 
@@ -25,7 +22,6 @@ export const Profile: FC = () => {
       name: user?.name || '',
       email: user?.email || ''
     }));
-    resetError();
   }, [user]);
 
   const isFormChanged =
@@ -41,8 +37,8 @@ export const Profile: FC = () => {
   const handleCancel = (e: SyntheticEvent) => {
     e.preventDefault();
     setFormValue({
-      name: user?.name!,
-      email: user?.email!,
+      name: user!.name,
+      email: user!.email,
       password: ''
     });
   };
