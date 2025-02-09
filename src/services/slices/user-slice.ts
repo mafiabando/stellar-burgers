@@ -100,7 +100,6 @@ const userSlice = createSlice({
     builder
       .addCase(fetchLoginUserApi.pending, (state) => {
         state.isLoading = true;
-        state.isAuthenticated = true;
         state.error = null;
       })
       .addCase(fetchLoginUserApi.fulfilled, (state, action) => {
@@ -115,6 +114,7 @@ const userSlice = createSlice({
       })
       .addCase(fetchRegisterUserApi.pending, (state) => {
         state.isLoading = true;
+        state.isAuthenticated = false;
         state.error = null;
       })
       .addCase(fetchRegisterUserApi.fulfilled, (state, action) => {
@@ -125,6 +125,7 @@ const userSlice = createSlice({
       })
       .addCase(fetchRegisterUserApi.rejected, (state, action) => {
         state.isLoading = false;
+        state.isAuthenticated = false;
         state.error = action.error.message;
       })
       .addCase(fetchResetPasswordApi.pending, (state) => {
@@ -158,10 +159,12 @@ const userSlice = createSlice({
       })
       .addCase(fetchUpdateUserApi.fulfilled, (state, action) => {
         state.data = action.payload.user;
+        state.isAuthenticated = true;
         state.error = null;
       })
       .addCase(fetchGetUserApi.fulfilled, (state, action) => {
         state.data = action.payload.user;
+        state.isAuthenticated = true;
         state.error = null;
       })
       .addCase(fetchGetOrdersApi.fulfilled, (state, action) => {

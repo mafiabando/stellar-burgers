@@ -4,7 +4,7 @@ import { TOrder, TOrdersData } from '@utils-types';
 
 export type TFeedsState = {
   data: TOrdersData;
-  orderByNumber: TOrder[] | [];
+  orderByNumber: TOrder | null;
   error: string | null | undefined;
 };
 
@@ -14,7 +14,7 @@ export const initialState: TFeedsState = {
     total: NaN,
     totalToday: NaN
   },
-  orderByNumber: [],
+  orderByNumber: null,
   error: null
 };
 
@@ -32,7 +32,7 @@ const feedsSlice = createSlice({
   initialState,
   reducers: {},
   selectors: {
-    getFeedsDataSelector: (state) => state.data?.orders,
+    getFeedsDataSelector: (state) => state.data.orders,
     getOrderByNumberSelector: (state) => state.orderByNumber,
     getTotalSelector: (state) => state.data.total,
     getTotalTodaySelector: (state) => state.data.totalToday
@@ -61,7 +61,7 @@ const feedsSlice = createSlice({
       })
       .addCase(fetchOrderByNumberApi.fulfilled, (state, action) => {
         state.error = null;
-        state.orderByNumber = action.payload.orders;
+        state.orderByNumber = action.payload.orders[0];
       });
   }
 });
