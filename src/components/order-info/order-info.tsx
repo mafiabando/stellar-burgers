@@ -2,17 +2,22 @@ import { FC, useEffect, useMemo } from 'react';
 import { Preloader } from '../ui/preloader';
 import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient } from '@utils-types';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from '../../services/store';
 
 import { fetchOrderByNumberApi } from '../../services/slices/feeds-slice';
 import { getOrderByNumberSelector } from '../../services/slices/feeds-slice';
 import { getIngredientsDataSelector } from '../../services/slices/ingredients-slice';
+import { Modal } from '@components';
 
 export const OrderInfo: FC = () => {
   /** TODO: взять переменные orderData и ingredients из стора */
   const dispatch = useDispatch();
   const { number } = useParams();
+  const navigate = useNavigate();
+  const handleClose = () => {
+    navigate(-1);
+  };
 
   useEffect(() => {
     dispatch(fetchOrderByNumberApi(Number(number)));
