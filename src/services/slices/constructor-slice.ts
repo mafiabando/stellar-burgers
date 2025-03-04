@@ -46,10 +46,8 @@ const constructorSlice = createSlice({
       }
     },
     resetConstructor(state) {
-      state = {
-        bun: null,
-        ingredients: []
-      };
+      state.bun = null;
+      state.ingredients = [];
     }
   },
   selectors: {

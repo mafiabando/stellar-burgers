@@ -1,0 +1,122 @@
+{
+    "success": true,
+    "data": [
+    {
+      "_id": "1",
+      "name": "Ингредиент 1",
+      "type": "bun",
+      "proteins": 80,
+      "fat": 24,
+      "carbohydrates": 53,
+      "calories": 420,
+      "price": 125.5,
+      "image": "bulka.jpg",
+      "image_large": "bulka-large.jpg",
+      "image_mobile": "bulka-mobile.jpg"
+    },
+    {
+      "_id": "2",
+      "name": "Ингредиент 2",
+      "type": "main",
+      "proteins": 90,
+      "fat": 50,
+      "carbohydrates": 30,
+      "calories": 550,
+      "price": 250.5,
+      "image": "kotleta.jpg",
+      "image_large": "kotleta-large.jpg",
+      "image_mobile": "kotleta-mobile.jpg"
+    },
+    {
+      "_id": "3",
+      "name": "Ингредиент 3",
+      "type": "sauce",
+      "proteins": 10,
+      "fat": 5,
+      "carbohydrates": 20,
+      "calories": 100,
+      "price": 50,
+      "image": "sauce.jpg",
+      "image_large": "sauce-large.jpg",
+      "image_mobile": "sauce-mobile.jpg"
+    },
+    {
+      "_id": "4",
+      "name": "Ингредиент 4",
+      "type": "main",
+      "proteins": 5,
+      "fat": 2,
+      "carbohydrates": 10,
+      "calories": 50,
+      "price": 30,
+      "image": "salad.jpg",
+      "image_large": "salad-large.jpg",
+      "image_mobile": "salad-mobile.jpg"
+    },
+    {
+      "_id": "5",
+      "name": "Ингредиент 5",
+      "type": "main",
+      "proteins": 10,
+      "fat": 15,
+      "carbohydrates": 30,
+      "calories": 200,
+      "price": 80,
+      "image": "fries.jpg",
+      "image_large": "fries-large.jpg",
+      "image_mobile": "fries-mobile.jpg"
+    },
+    {
+      "_id": "6",
+      "name": "Ингредиент 6",
+      "type": "sauce",
+      "proteins": 2,
+      "fat": 3,
+      "carbohydrates": 15,
+      "calories": 70,
+      "price": 20,
+      "image": "ketchup.jpg",
+      "image_large": "ketchup-large.jpg",
+      "image_mobile": "ketchup-mobile.jpg"
+    },
+    {
+      "_id": "7",
+      "name": "Ингредиент 7",
+      "type": "sauce",
+      "proteins": 3,
+      "fat": 4,
+      "carbohydrates": 10,
+      "calories": 80,
+      "price": 25,
+      "image": "mayonnaise.jpg",
+      "image_large": "mayonnaise-large.jpg",
+      "image_mobile": "mayonnaise-mobile.jpg"
+    },
+    {
+      "_id": "8",
+      "name": "Ингредиент 8",
+      "type": "main",
+      "proteins": 1,
+      "fat": 0,
+      "carbohydrates": 5,
+      "calories": 20,
+      "price": 15,
+      "image": "cucumber.jpg",
+      "image_large": "cucumber-large.jpg",
+      "image_mobile": "cucumber-mobile.jpg"
+    },
+    {
+      "_id": "9",
+      "name": "Ингредиент 9",
+      "type": "main",
+      "proteins": 2,
+      "fat": 1,
+      "carbohydrates": 8,
+      "calories": 30,
+      "price": 20,
+      "image": "tomato.jpg",
+      "image_large": "tomato-large.jpg",
+      "image_mobile": "tomato-mobile.jpg"
+    }
+  ]
+}
