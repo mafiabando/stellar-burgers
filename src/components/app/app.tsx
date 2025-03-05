@@ -38,7 +38,7 @@ const App = () => {
   return (
     <div className={styles.app}>
       <AppHeader />
-      <Routes location={backgroundlocation}>
+      <Routes location={backgroundlocation || location}>
         <Route path='*' element={<NotFound404 />} />
         <Route path='/' element={<ConstructorPage />} />
         <Route path='/feed' element={<Feed />} />
@@ -96,7 +96,9 @@ const App = () => {
           path='/profile/orders/:number'
           element={
             <ProtectedRoute>
-              <OrderInfo />
+              <Modal title={'информация о заказе'} onClose={handleClose}>
+                <OrderInfo />
+              </Modal>
             </ProtectedRoute>
           }
         />
@@ -122,9 +124,11 @@ const App = () => {
           <Route
             path='profile/orders/:number'
             element={
-              <Modal title={'информация о заказе'} onClose={handleClose}>
-                <OrderInfo />
-              </Modal>
+              <ProtectedRoute>
+                <Modal title={'информация о заказе'} onClose={handleClose}>
+                  <OrderInfo />
+                </Modal>
+              </ProtectedRoute>
             }
           />
         </Routes>

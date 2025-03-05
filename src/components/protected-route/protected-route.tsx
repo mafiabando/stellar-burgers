@@ -2,7 +2,8 @@ import React from 'react';
 import { useSelector } from '../../services/store';
 import {
   isAuthenticatedSelector,
-  userSelector
+  userSelector,
+  isLoadingSelector
 } from '../../services/slices/user-slice';
 import { Navigate, useLocation } from 'react-router-dom';
 import { Preloader } from '@ui';
@@ -18,17 +19,18 @@ export const ProtectedRoute = ({
 }: ProtectedRouteProps) => {
   const isAuthChecked = useSelector(isAuthenticatedSelector);
   const user = useSelector(userSelector);
+  const isLoading = useSelector(isLoadingSelector);
   const location = useLocation();
 
-  if (!isAuthChecked) {
+  if (isLoading) {
     return <Preloader />;
   }
 
-  if (!onlyUnAuth && !user) {
+  if (!onlyUnAuth && !isAuthChecked && !user) {
     return <Navigate replace to='/login' state={{ from: location }} />;
   }
 
-  if (onlyUnAuth && user) {
+  if (onlyUnAuth && isAuthChecked && user) {
     const from = location.state?.from || { pathname: '/' };
     return <Navigate replace to={from} state={location} />;
   }
